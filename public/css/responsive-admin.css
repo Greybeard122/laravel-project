@@ -1,0 +1,422 @@
+/* Expand Filter Box to Full Width */
+.filter-box {
+    max-width: 100%; /* Ensure it takes the full width */
+    width: 100%;
+}
+
+/* Ensure Inputs & Buttons Fill Space Properly */
+.filter-box .row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+}
+
+.filter-box .col-md-3 {
+    flex: 1; /* Allow columns to take equal space */
+    min-width: 200px; /* Prevent fields from shrinking too much */
+}
+
+.filter-box .btn {
+    width: 100%;
+}
+
+/* Improve Button Layout on Large Screens */
+@media (min-width: 992px) {
+    .filter-box .col-md-3.d-flex {
+        display: flex;
+        align-items: flex-end;
+        gap: 8px;
+    }
+}
+
+/* General Styles */
+body {
+    font-family: 'Arial', sans-serif;
+    background-color: #f7fafc;
+    color: #4a5568;
+    margin: 0;
+    padding: 0;
+    overflow-x: hidden;
+}
+
+/* Enhanced Navigation Styles */
+.navbar {
+    position: sticky;
+    top: 0;
+    z-index: 999;
+    padding: 0.5rem 1rem;
+    background-color: #1a202c !important;
+    backdrop-filter: blur(10px);
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+.navbar-brand {
+    font-size: 1.25rem;
+    color: white;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+.navbar-brand img {
+    height: 2.5rem;
+    width: auto;
+    transition: transform 0.2s ease;
+}
+
+.navbar-brand:hover img {
+    transform: scale(1.05);
+}
+
+/* Enhanced Mobile Navigation */
+@media (max-width: 768px) {
+    #navbar-main {
+        position: fixed;
+        top: 72px;
+        left: 0;
+        right: 0;
+        background-color: #1a202c;
+        padding: 1rem;
+        transform: translateY(-100%);
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        z-index: 998;
+        box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1);
+        max-height: calc(100vh - 72px);
+        overflow-y: auto;
+    }
+
+    #navbar-main.block {
+        transform: translateY(0);
+    }
+
+    #navbar-main ul {
+        background-color: #2d3748;
+        border-radius: 0.5rem;
+        padding: 0.75rem;
+    }
+
+    #navbar-main li {
+        margin: 0.5rem 0;
+    }
+
+    #navbar-main a, 
+    #navbar-main button {
+        width: 100%;
+        text-align: center;
+        padding: 0.75rem 1rem;
+        border-radius: 0.375rem;
+        transition: all 0.2s ease;
+        color: white;
+        display: block;
+        font-weight: 500;
+    }
+
+    #navbar-main a:hover,
+    #navbar-main button:hover {
+        background-color: rgba(74, 144, 226, 0.8);
+        transform: translateX(4px);
+    }
+
+    /* Mobile Menu Scrollbar */
+    #navbar-main::-webkit-scrollbar {
+        width: 4px;
+    }
+
+    #navbar-main::-webkit-scrollbar-thumb {
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 4px;
+    }
+}
+
+/* Hamburger Button Styles */
+.hamburger-btn {
+    display: none;
+    background: transparent;
+    border: none;
+    cursor: pointer;
+    padding: 0.75rem;
+    width: 48px;
+    height: 48px;
+    align-items: center;
+    justify-content: center;
+    transition: all 0.3s ease;
+    border-radius: 0.5rem;
+    color: white;
+}
+
+.hamburger-btn:hover {
+    background-color: rgba(255, 255, 255, 0.1);
+}
+
+.hamburger-btn:focus {
+    outline: none;
+    box-shadow: 0 0 0 2px rgba(66, 153, 225, 0.5);
+}
+
+/* Sidebar Styles */
+.sidebar {
+    width: 260px;
+    height: 100vh;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: #2d3748;
+    transition: transform 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    z-index: 1000;
+    overflow-y: auto;
+    box-shadow: 4px 0 10px rgba(0, 0, 0, 0.1);
+}
+
+/* Sidebar Scrollbar */
+.sidebar::-webkit-scrollbar {
+    width: 4px;
+}
+
+.sidebar::-webkit-scrollbar-thumb {
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 4px;
+}
+
+.sidebar-logo {
+    padding: 1.25rem;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    background: rgba(0, 0, 0, 0.1);
+}
+
+.sidebar-logo img {
+    max-width: 120px;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+    transition: transform 0.2s ease;
+}
+
+.sidebar-logo img:hover {
+    transform: scale(1.05);
+}
+
+/* Enhanced Sidebar Navigation */
+.sidebar .nav-link {
+    display: flex;
+    align-items: center;
+    color: rgba(255, 255, 255, 0.8);
+    font-weight: 500;
+    padding: 0.875rem 1.5rem;
+    transition: all 0.2s ease;
+    border-radius: 0.375rem;
+    margin: 0.25rem 0.75rem;
+    font-size: 0.95rem;
+    white-space: nowrap;
+}
+
+.sidebar .nav-link:hover,
+.sidebar button.nav-link:hover {
+    background-color: rgba(74, 144, 226, 0.8);
+    color: white;
+    transform: translateX(4px);
+}
+
+.sidebar .nav-link.active {
+    background-color: rgba(74, 144, 226, 0.6);
+    color: white;
+}
+
+/* Close Sidebar Button */
+.close-sidebar {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    background: rgba(255, 255, 255, 0.1);
+    border: none;
+    border-radius: 50%;
+    width: 32px;
+    height: 32px;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    color: white;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+
+.close-sidebar:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+/* Content Area */
+.content-area {
+    margin-left: 280px;
+    transition: margin 0.3s ease-in-out;
+    min-height: 100vh;
+    background-color: #f7fafc;
+    padding: 2rem;
+}
+
+/* Desktop Styles */
+@media (min-width: 769px) {
+    .hamburger-btn {
+        display: none !important;
+    }
+
+    .sidebar {
+        transform: none !important;
+    }
+
+    .close-sidebar {
+        display: none !important;
+    }
+
+    #navbar-main {
+        display: block !important;
+    }
+
+    #navbar-main ul {
+        display: flex;
+        align-items: center;
+        gap: 0.5rem;
+    }
+
+    #navbar-main a,
+    #navbar-main button {
+        color: white;
+        padding: 0.5rem 1rem;
+        border-radius: 0.375rem;
+        transition: all 0.2s ease;
+        white-space: nowrap;
+    }
+
+    #navbar-main a:hover,
+    #navbar-main button:hover {
+        background-color: rgba(74, 144, 226, 0.8);
+    }
+}
+
+/* Enhanced Mobile Styles */
+@media (max-width: 768px) {
+    .sidebar {
+        transform: translateX(-100%);
+        width: 100%;
+        max-width: 280px;
+    }
+
+    .sidebar.active {
+        transform: translateX(0);
+    }
+
+    .content-area {
+        margin-left: 0;
+        width: 100%;
+        padding: 1rem;
+    }
+
+    .close-sidebar {
+        display: flex;
+    }
+
+    .navbar {
+        padding: 0.75rem 1rem;
+    }
+
+    .navbar-brand {
+        font-size: 1.1rem;
+    }
+
+    .hamburger-btn {
+        display: flex;
+        margin: -0.5rem 0;
+    }
+}
+
+/* Form Controls */
+.form-control {
+    border-radius: 0.5rem;
+    border: 2px solid #e2e8f0;
+    padding: 0.75rem 1rem;
+    transition: all 0.2s ease;
+    font-size: 1rem;
+    width: 100%;
+}
+
+.form-control:focus {
+    border-color: #4a90e2;
+    box-shadow: 0 0 0 3px rgba(74, 144, 226, 0.15);
+    outline: none;
+}
+
+/* Buttons */
+.btn {
+    border-radius: 0.5rem;
+    padding: 0.75rem 1.25rem;
+    font-weight: 500;
+    transition: all 0.2s ease;
+    cursor: pointer;
+}
+
+.btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+}
+
+.btn:active {
+    transform: translateY(0);
+}
+
+/* Enhanced Card Styles */
+.card {
+    background: white;
+    border-radius: 1rem;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 15px rgba(0, 0, 0, 0.1);
+}
+
+.card-header {
+    background: #2d3748;
+    color: white;
+    padding: 1.25rem 1.5rem;
+    font-size: 1.25rem;
+    font-weight: 600;
+}
+
+.card-body {
+    padding: 1.5rem;
+}
+
+/* Navigation Animations */
+@keyframes slideIn {
+    from {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@keyframes slideOut {
+    from {
+        transform: translateY(0);
+        opacity: 1;
+    }
+    to {
+        transform: translateY(-100%);
+        opacity: 0;
+    }
+}
+
+.nav-slide-in {
+    animation: slideIn 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.nav-slide-out {
+    animation: slideOut 0.3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
